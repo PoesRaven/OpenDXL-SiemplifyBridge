@@ -1,6 +1,9 @@
 # OpenDXL-SiemplifyBridge
 Consumers and repeaters for sending DXL messages to the McAfee DXL Integration with Siemplify (https://www.siemplify.co)
 
+Anything connecting to the DXL fabric needs to have gone through the DXL client provisioning process: https://opendxl.github.io/opendxl-client-python/pydoc/basiccliprovisioning.html
+
+
 ## Formatting
 When creating a JSON payload needing to be consumed by the DXL subscriber for Siemplify, we expect the following JSON
 ``` js
