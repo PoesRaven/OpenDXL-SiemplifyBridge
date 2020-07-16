@@ -29,4 +29,6 @@ When creating a JSON payload needing to be consumed by the DXL subscriber for Si
 ```
 The formatting can be extended but would require updates on the DXL Subscriber integration to ensure it is loaded into the newly created case.
 
-##
+## ESM_alarm.py
+This bridge consumes native alarm data from McAfee's ESM alarms which have been published over DXL(This requires ESM 11.3). Then the alarm data is converted into bridge format (see above) and published to the `/mcafee/event/trigger/` topic. Ensure the Siemplify DXL Subscriber is listening to this topic. 
+
