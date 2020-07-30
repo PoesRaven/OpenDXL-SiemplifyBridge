@@ -12,7 +12,7 @@ from dxlclient.client import DxlClient
 from dxlclient.client_config import DxlClientConfig
 from dxlclient.message import Event
 
-from common import *
+CONFIG_FILE = "/etc/mcafee/dxl/dxlclient.config"
 
 # Configure local logger
 logging.getLogger().setLevel(logging.ERROR)
@@ -70,13 +70,13 @@ with DxlClient(config) as client:
                     if len(event) > 0:
                         print(event)
                         event_out = {}
-                        event_out['StartTime'] = event['LastTime']
-                        event_out['EndTime'] = event['LastTime']
-                        event_out['name'] = event['Message']
-                        event_out['SourceHostName'] = "N/A"
-                        event_out['DestinationHostName'] = "N/A"
-                        event_out['SourceAddress'] = event['SourceIP']
-                        event_out['DestinationAddress'] = event['DestinationIP']
+                        event_out['StartTime'] = event.get('LastTime')
+                        event_out['EndTime'] = event.get('LastTime')
+                        event_out['name'] = event.get('Message')
+                        event_out['event_id'] = event.get('EventID')
+                        event_out['SourceAddress'] = event.get('SourceIP')
+                        event_out['DestinationAddress'] = event.get('DestinationIP')
+                        event_out['application_protocol'] = event.get('Protocol')
     
                         event_payload_out['events'].append(event_out)
 
